@@ -1,24 +1,23 @@
 package com.farhan.backend.controller;
 
 import com.farhan.backend.dto.PromptRequest;
-// import com.farhan.backend.dto.SqlResponse;
-import com.farhan.backend.dto.gemini.GeminiRequest;
-import com.farhan.backend.service.GeminiService;
+import com.farhan.backend.service.AiService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/sql")
 public class SqlController {
 
-    private final GeminiService geminiService;
+    private final AiService aiService;
 
-    public SqlController(GeminiService geminiService) {
-        this.geminiService = geminiService;
+    public SqlController(AiService aiService) {
+        this.aiService = aiService;
     }
 
     @PostMapping("/generate")
-    public GeminiRequest generateSql(@RequestBody PromptRequest request) {
+    public String generate(@RequestBody PromptRequest request) {
 
-        return geminiService.buildRequest(request.getPrompt());
+        return aiService.generateResponse(request.getPrompt());
+
     }
 }
