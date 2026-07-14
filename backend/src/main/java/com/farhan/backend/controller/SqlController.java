@@ -1,6 +1,7 @@
 package com.farhan.backend.controller;
 
 import com.farhan.backend.dto.PromptRequest;
+import com.farhan.backend.dto.SqlResponse;
 import com.farhan.backend.service.AiService;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,9 +16,10 @@ public class SqlController {
     }
 
     @PostMapping("/generate")
-    public String generate(@RequestBody PromptRequest request) {
+    public SqlResponse generate(@RequestBody PromptRequest request) {
 
-        return aiService.generateResponse(request.getPrompt());
+        String sql = aiService.generateResponse(request.getPrompt());
 
+        return new SqlResponse(sql);
     }
 }
