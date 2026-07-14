@@ -115,7 +115,7 @@ function PromptInput({ darkMode }) {
 
               <button
                 onClick={copySql}
-                className="bg-green-600 hover:bg-green-700 transition text-white px-5 py-2 rounded-xl"
+                className="bg-green-600 hover:bg-emerald-700 text-white px-5 py-2 rounded-xl cursor-pointer transition-all duration-300 hover:scale-110 hover:shadow-xl active:scale-95"
               >
                 📋 Copy SQL
               </button>
