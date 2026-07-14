@@ -4,20 +4,33 @@ import api from "../services/api";
 function PromptInput() {
   const [prompt, setPrompt] = useState("");
   const [sql, setSql] = useState("");
-
+  const [loading, setLoading] = useState(false);
   const generateSql = async () => {
+    if (!prompt.trim()) {
+      alert("Please enter a prompt.");
+      return;
+    }
+    setLoading(true);
     try {
       const response = await api.post("/sql/generate", {
         prompt: prompt,
       });
-
       setSql(response.data.sql);
     } catch (error) {
       alert("Failed to generate SQL");
       console.error(error);
+    } finally {
+      setLoading(false);
     }
   };
-
+  const copySql = async () => {
+    try {
+      await navigator.clipboard.writeText(sql);
+      alert("SQL copied to clipboard!");
+    } catch (error) {
+      alert("Failed to copy SQL.");
+    }
+  };
   return (
     <div
       style={{
@@ -50,7 +63,7 @@ function PromptInput() {
           cursor: "pointer",
         }}
       >
-        Generate SQL
+        {loading ? "Generating..." : "Generate SQL"}
       </button>
 
       {sql && (
@@ -67,6 +80,17 @@ function PromptInput() {
               background: "#f5f5f5",
             }}
           />
+
+          <button
+            onClick={copySql}
+            style={{
+              padding: "12px",
+              fontSize: "16px",
+              cursor: "pointer",
+            }}
+          >
+            📋 Copy SQL
+          </button>
         </>
       )}
     </div>
