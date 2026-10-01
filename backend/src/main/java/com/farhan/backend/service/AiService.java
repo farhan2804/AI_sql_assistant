@@ -41,7 +41,7 @@ public class AiService {
                         """ + prompt);
 
         Map<String, Object> request = new HashMap<>();
-        request.put("model", "llama-3.3-70b-versatile");
+        request.put("model", "openai/gpt-oss-120b");
         request.put("messages", List.of(message));
         request.put("temperature", 0);
 
