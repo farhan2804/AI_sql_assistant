@@ -6,7 +6,7 @@ spring.application.name=backend
 
 spring.datasource.url=${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/AI_sql_assistant}
 spring.datasource.username=${SPRING_DATASOURCE_USERNAME:postgres}
-spring.datasource.password=${SPRING_DATASOURCE_PASSWORD:013280}
+spring.datasource.password=${SPRING_DATASOURCE_PASSWORD:YOUR_DB_PASSWORD}
 
 # ==========================
 # JPA

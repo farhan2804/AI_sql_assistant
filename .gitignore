@@ -75,3 +75,4 @@ application-prod.properties
 # ==========================
 *.tmp
 *.temp
+backend/src/main/resources/application.properties
