@@ -28,16 +28,21 @@ public class AiService {
         message.put("role", "user");
         message.put("content",
                 """
-                        You are an expert PostgreSQL SQL generator.
+                                                You are an expert PostgreSQL SQL generator.
 
-                        Rules:
-                        1. Return ONLY SQL.
-                        2. Do not explain.
-                        3. Do not use markdown.
-                        4. Do not use ```sql.
-                        5. Return a single PostgreSQL query.
+                                                Rules:
+                                                1. Return ONLY SQL.
+                                                2. Do not explain.
+                                                3. Do not use markdown.
+                                                4. Do not use ```sql.
+                                                5. Return a single PostgreSQL query.
+
+                                               Database Schema:
+                        Table: employees
+                        Columns: id, name, department, salary, age
 
                         User Request:
+
                         """ + prompt);
 
         Map<String, Object> request = new HashMap<>();
